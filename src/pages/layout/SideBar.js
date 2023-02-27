@@ -21,7 +21,7 @@ export const SideBar = () => {
           </Link>
         </li>
         <li>
-          <Link to="/payment Methods">
+          <Link to="/paymentMethods">
             <i className="fa-solid fa-credit-card"></i> Payment Methods
           </Link>
         </li>

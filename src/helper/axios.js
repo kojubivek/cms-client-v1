@@ -2,6 +2,7 @@ import axios from "axios";
 const rootUrl = "http://localhost:8000/api/v1";
 const adminApi = rootUrl + "/admin";
 const catApi = rootUrl + "/category";
+const paymentApi = rootUrl + "/paymentMethods";
 
 const fetchProcesser = async ({ method, url, data }) => {
   try {
@@ -104,6 +105,45 @@ export const deleteCategory = async (_id) => {
 
 export const updateCategory = async (data) => {
   const url = catApi;
+  const obj = {
+    method: "put",
+    url,
+    data,
+  };
+  return fetchProcesser(obj);
+};
+
+/////payment methods
+export const addPaymentMethod = async (data) => {
+  const url = paymentApi;
+  const obj = {
+    method: "post",
+    url,
+    data,
+  };
+  return fetchProcesser(obj);
+};
+
+export const fetchpaymentmethods = async () => {
+  const url = paymentApi;
+  const obj = {
+    method: "get",
+    url,
+  };
+  return fetchProcesser(obj);
+};
+
+export const deletePaymentMethod = async (_id) => {
+  const url = paymentApi + "/" + _id;
+  const obj = {
+    method: "delete",
+    url,
+  };
+  return fetchProcesser(obj);
+};
+
+export const updatePaymentMethod = async (data) => {
+  const url = paymentApi;
   const obj = {
     method: "put",
     url,
