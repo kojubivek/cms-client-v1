@@ -9,7 +9,6 @@ export const EditPaymentMethod = ({ selectedPayment }) => {
 
   useEffect(() => {
     setFormData(selectedPayment);
-    console.log(selectedPayment);
   }, [selectedPayment]);
   const handleOnChange = (e) => {
     const { name, value } = e.target;

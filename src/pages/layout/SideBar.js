@@ -43,4 +43,4 @@ export const SideBar = () => {
       </ul>
     </div>
   );
-};
+}
