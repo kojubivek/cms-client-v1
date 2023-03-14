@@ -8,7 +8,7 @@ export const loginAction = (formData) => async (dispatch) => {
 
     // call axios-helper / api
     const pendingResp = loginAdmin(formData);
-
+    console.log(pendingResp);
     toast.promise(pendingResp, { pending: "Please wait ...." });
 
     const { status, message, tokens } = await pendingResp;
