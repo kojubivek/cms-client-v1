@@ -4,14 +4,21 @@ const adminApi = rootUrl + "/admin";
 const catApi = rootUrl + "/category";
 const paymentApi = rootUrl + "/paymentMethods";
 
-const fetchProcesser = async ({ method, url, data }) => {
+const fetchProcesser = async ({ method, url, data, isPrivate }) => {
   try {
+    const token = sessionStorage.getItem("accessJWT");
+    const headers = isPrivate
+      ? {
+          Authorization: token,
+        }
+      : null;
     // await axios.post(adminApi + "/register", data);
 
     const res = await axios({
       method,
       url,
       data,
+      headers,
     });
 
     return res.data;
@@ -148,6 +155,16 @@ export const updatePaymentMethod = async (data) => {
     method: "put",
     url,
     data,
+  };
+  return fetchProcesser(obj);
+};
+
+export const fetchAdminProfile = async () => {
+  const url = adminApi + "/user-profile";
+  const obj = {
+    method: "get",
+    url,
+    isPrivate: true,
   };
   return fetchProcesser(obj);
 };
